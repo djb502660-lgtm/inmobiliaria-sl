@@ -6,6 +6,19 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Logo } from '@/components/logo';
+import { useAuth } from '../context/AuthContext';
+import { View } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
+const HeaderTitle = () => {
+  const { user } = useAuth();
+  return (
+    <View>
+      <ThemedText type="defaultSemiBold">Bienvenido, {user?.name}</ThemedText>
+      <ThemedText type="caption">{user?.email}</ThemedText>
+    </View>
+  )
+}
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -16,7 +29,8 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: true,
         tabBarButton: HapticTab,
-        headerTitle: () => <Logo />,
+        headerTitle: () => <HeaderTitle />,
+        headerRight: () => <Logo />,
       }}>
       <Tabs.Screen
         name="index"
