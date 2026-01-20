@@ -81,6 +81,8 @@ export default function HomeScreen() {
           style={styles.searchInput}
           value={searchQuery}
           onChangeText={handleSearch}
+          placeholderTextColor="#999"
+          selectionColor="#007A7A"
         />
         <IconSymbol name="magnifyingglass" size={20} color="#666" style={styles.searchIcon} />
       </ThemedView>
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
+    color: '#1a1a1a',
   },
   searchIcon: {
     marginLeft: 10,
